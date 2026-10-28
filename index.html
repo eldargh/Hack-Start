@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HackStart — идеяларды бірге дамыту платформасы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#home" aria-label="HackStart">
+    <svg viewBox="0 0 32 32" width="30" height="30"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2C7873"/><stop offset="1" stop-color="#89D6D5"/></linearGradient></defs><path d="M16 2 28 9v14L16 30 4 23V9z" fill="none" stroke="url(#lg)" stroke-width="2.4"/><path d="M11 21V11m10 10V11m-10 5h10" stroke="url(#lg)" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <span>HackStart</span>
+  </a>
+  <nav id="menu" class="menu" aria-label="Негізгі мәзір">
+    <a href="#home">Басты бет</a><a href="#categories">Категориялар</a><a href="#groups">Топтар</a><a href="#ideas">Идеялар</a><a href="#projects">Жобалар</a><a href="#assistant">Hack-көмекші</a><a href="#score">HackStart Score</a><a href="#authors">Авторлар</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="searchBtn" aria-label="Іздеу"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+    <div class="dd-wrap">
+      <button class="icon-btn" id="notifBtn" aria-label="Хабарландырулар"><svg viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 1 1 12 0v6l2 2H4zM10 21h4"/></svg><i id="notifCount" class="badge" hidden>0</i></button>
+      <div id="notifPanel" class="dd" hidden></div>
+    </div>
+    <button class="icon-btn" id="profileBtn" aria-label="Профиль"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></button>
+    <button class="btn primary sm" id="createBtn">Топ құру</button>
+    <button class="icon-btn burger" id="burger" aria-label="Мәзір"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+      <defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2C7873" stop-opacity=".0"/><stop offset=".5" stop-color="#89D6D5" stop-opacity=".35"/><stop offset="1" stop-color="#2C7873" stop-opacity="0"/></linearGradient></defs>
+      <path class="w1" d="M-100 430C100 340 260 520 480 430S820 340 1000 430 1250 400 1300 420V600H-100Z" fill="url(#wg)"/>
+      <path class="w2" d="M-100 500C120 430 300 560 520 490S860 430 1040 500 1250 480 1300 500V600H-100Z" fill="#2C7873" fill-opacity=".28"/>
+      <line class="ln" x1="760" y1="120" x2="940" y2="220"/><line class="ln" x1="940" y1="220" x2="1080" y2="110"/><line class="ln" x1="940" y1="220" x2="880" y2="360"/><line class="ln" x1="880" y1="360" x2="1060" y2="400"/>
+      <circle class="nd" cx="760" cy="120" r="4"/><circle class="nd" cx="940" cy="220" r="4"/><circle class="nd" cx="1080" cy="110" r="4"/><circle class="nd" cx="880" cy="360" r="4"/><circle class="nd" cx="1060" cy="400" r="4"/>
+      <polygon class="hx" points="170,90 200,107 200,141 170,158 140,141 140,107"/>
+      <polygon class="hx" points="620,60 660,83 660,129 620,152 580,129 580,83"/>
+      <polygon class="hx" points="1110,260 1140,277 1140,311 1110,328 1080,311 1080,277"/>
+      <polygon class="hx" points="330,380 360,397 360,431 330,448 300,431 300,397"/>
+      <polygon class="hx" points="1000,500 1038,522 1038,566 1000,588 962,566 962,522"/>
+    </svg>
+  </div>
+  <div class="wrap hero-in">
+    <h1>Идеяңды тап. Командаңды жина. Болашақты бірге құр!</h1>
+    <p>HackStart — инновациялық идеяларды дамытып, пікірлес адамдармен бірігіп, армандаған жобаңды жүзеге асыруға мүмкіндік беретін ортақ платформа.</p>
+    <div class="row"><a class="btn primary" href="#groups">Топтарды зерттеу</a><button class="btn ghost" data-create>Өз тобыңды құр</button></div>
+    <p class="note">Бұл — демо нұсқа: деректер тек сіздің браузеріңізде сақталады, серверге жіберілмейді.</p>
+  </div>
+</section>
+
+<section class="wrap"><div id="stats" class="stats"></div></section>
+
+<section id="categories" class="wrap sec"><h2>Танымал категориялар</h2><p class="sub">Қызықты бағытыңды таңдап, сол бойынша топтарды қара.</p><div id="catGrid" class="grid cats"></div></section>
+
+<section id="groups" class="wrap sec">
+  <h2>Топтар</h2><p class="sub" id="groupsSub"></p>
+  <div class="tools">
+    <input id="gSearch" type="search" placeholder="Топты іздеу…" aria-label="Топты іздеу">
+    <select id="gCat" aria-label="Категория"></select>
+    <select id="gSort" aria-label="Сұрыптау"><option value="members">Қатысушылар саны бойынша</option><option value="new">Жаңадан құрылған</option><option value="name">Атауы бойынша</option></select>
+  </div>
+  <div id="groupGrid" class="grid"></div>
+</section>
+
+<section class="wrap sec"><h2>Жаңадан құрылған топтар</h2><div id="newGroups" class="grid"></div></section>
+
+<section id="ideas" class="wrap sec">
+  <div class="between"><div><h2>Идеялар</h2><p class="sub">Идея ұсын, дауыс бер, ұнағанын сақта.</p></div><button class="btn primary" id="addIdeaBtn">Жаңа идея қосу</button></div>
+  <div class="tools"><input id="iSearch" type="search" placeholder="Идеяны іздеу…" aria-label="Идеяны іздеу"><select id="iCat" aria-label="Категория"></select><label class="chk"><input type="checkbox" id="iSaved"> Сақталғандар</label></div>
+  <div id="ideaGrid" class="grid"></div>
+</section>
+
+<section id="projects" class="wrap sec"><h2>Жобалар</h2><p class="sub">Топтардың жоспар бойынша даму барысы.</p><div id="projGrid" class="grid"></div></section>
+
+<section id="assistant" class="wrap sec"><h2>Hack-көмекші</h2><p class="sub">Идея, команда, жоспар және HackStart Score бойынша көмекші.</p>
+<div class="assist"><aside class="card robot-card"><svg class="rb" id="robot" viewBox="0 0 200 250" role="img" aria-label="Hack-көмекші робот">
+<line x1="100" y1="14" x2="100" y2="40" stroke="#89D6D5" stroke-width="4"/><circle class="ant" cx="100" cy="12" r="8" fill="#89D6D5"/>
+<rect x="45" y="40" width="110" height="86" rx="30" fill="#dff6f5"/><circle cx="40" cy="83" r="9" fill="#2C7873"/><circle cx="160" cy="83" r="9" fill="#2C7873"/>
+<rect x="58" y="58" width="84" height="48" rx="18" fill="#021C1E"/><circle class="eye" cx="82" cy="80" r="7" fill="#89D6D5"/><circle class="eye" cx="118" cy="80" r="7" fill="#89D6D5"/>
+<path class="mouth" d="M88 96q12 8 24 0" stroke="#89D6D5" stroke-width="3" stroke-linecap="round"/>
+<rect x="88" y="124" width="24" height="10" fill="#2C7873"/>
+<rect x="50" y="134" width="100" height="76" rx="22" fill="#2C7873"/><text x="100" y="180" text-anchor="middle" font-family="Rubik,sans-serif" font-weight="700" font-size="26" fill="#fff" stroke="none">Hack</text>
+<rect class="arm" x="26" y="140" width="22" height="58" rx="11" fill="#dff6f5"/><rect x="152" y="140" width="22" height="58" rx="11" fill="#dff6f5"/>
+<rect x="68" y="208" width="24" height="34" rx="10" fill="#dff6f5"/><rect x="108" y="208" width="24" height="34" rx="10" fill="#dff6f5"/></svg><span class="mode" id="aiMode"></span></aside>
+<div class="card"><div id="chatLog" class="chatlog" aria-live="polite"></div><div id="chips" class="chips"></div><div class="row"><input id="chatIn" style="flex:1;min-width:0" maxlength="500" placeholder="Сұрағыңызды жазыңыз…" aria-label="Хабарлама"><button class="btn primary" id="chatSend">Жіберу</button><button class="btn ghost" id="chatClear">Тазалау</button></div></div></div></section>
+<section id="score" class="wrap sec"><h2>HackStart Score</h2><p class="sub">Жобаны 7 критерий бойынша, 100 балдық жүйемен бағалау: қолданушылар, сарапшылар және AI жеке көрсетіледі.</p><div id="scoreRoot"></div></section>
+<section class="wrap sec"><h2>HackStart қалай жұмыс істейді?</h2>
+  <ol class="steps"><li><b>Категория таңда</b><span>Өзіңе жақын бағытты тап.</span></li><li><b>Топқа қосыл</b><span>Немесе өз тобыңды құр.</span></li><li><b>Идея ұсын</b><span>Бірлесе талқылап, дауыс беріңдер.</span></li><li><b>Жобаны жүзеге асыр</b><span>Тапсырмаларды бөліп, жоспармен жүр.</span></li></ol>
+</section>
+<section id="authors" class="wrap sec"><h2>Авторлар</h2><p class="sub">HackStart платформасын жасаған авторлар.</p>
+  <div class="grid authors">
+    <article class="card author"><span class="av lg" aria-hidden="true">TE</span><div><h3>Toleubay Eldar</h3><div class="meta">HackStart авторы</div></div></article>
+    <article class="card author"><span class="av lg" aria-hidden="true">TD</span><div><h3>Toleubay Dildar</h3><div class="meta">HackStart авторы</div></div></article>
+  </div>
+</section>
+</main>
+<footer class="foot">© HackStart — демо нұсқа. Деректер браузерде (LocalStorage) сақталады.</footer>
+
+<div id="modalRoot"></div>
+<div id="wsRoot" class="ws" hidden></div>
+<div id="toast" class="toast" role="status" hidden></div>
+<script src="script.js"></script>
+</body>
+</html>
